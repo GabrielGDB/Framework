@@ -19,7 +19,7 @@ public class Bitacora {
 public Bitacora(){
         try {
             Properties props = new Properties();
-            props.load(getClass().getResourceAsStream("/balto/log4j.properties"));
+            props.load(getClass().getResourceAsStream("/bitacora/config_bit.properties"));
             PropertyConfigurator.configure(props);
         } catch (IOException e) {
             error(e);
