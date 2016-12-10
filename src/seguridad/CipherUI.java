@@ -21,12 +21,12 @@ public class CipherUI {
     
     Cipher cipher;
     UserInterface ui;
-    AccessManager accessManager;
+    AdministradorAcceso accessManager;
     
     public CipherUI(){
        cipher = new Cipher(); 
        ui = new UserInterface();
-       accessManager =  new AccessManager();
+       accessManager =  new AdministradorAcceso();
        users.put("Roland", "7/0WwdVGhv8=");
     }
             

@@ -9,7 +9,7 @@ package seguridad;
  *
  * @author dell
  */
-public class Users {
+public class Usuarios {
     
     public String name,pass,permission;
 

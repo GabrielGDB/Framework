@@ -3,20 +3,18 @@ package mapeo;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import mapeo.MapeoClaseTabla;
 import Util.exceptions.ArchivoConfigPoolNoEncontradoExcepcion;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 public class ParseadorConfiguracionMapeo {
 
     public ParseadorConfiguracionMapeo() {
 
     }
 
-    public MapeoClaseTabla[] parsear(String ruta) throws ArchivoConfigPoolNoEncontradoExcepcion {
+    public MapeoClaseTabla[] parsear(String ruta) throws ArchivoConfigPoolNoEncontradoExcepcion, JDOMException {
         MapeoClaseTabla[] configuracion = null ;
         //Se crea un SAXBuilder para poder parsear el archivo
         SAXBuilder builder = new SAXBuilder();

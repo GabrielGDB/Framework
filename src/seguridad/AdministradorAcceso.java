@@ -9,7 +9,7 @@ package seguridad;
  *
  * @author dell
  */
-public class AccessManager {
+public class AdministradorAcceso {
     
     int maxIntents;
     
