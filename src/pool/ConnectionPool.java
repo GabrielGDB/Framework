@@ -12,12 +12,13 @@ public class ConnectionPool {
     private static ArrayList<PoolConnection> conexionesLibres;
     private static ArrayList<PoolConnection> conexionesOcupadas;
     private static int conexionesTotales;
+    private Connection baseConnection;
     
     private ConnectionPool(String host, String user, String pass, String db_name) throws ConexionBDException{
         this.conexionesLibres = new ArrayList();
         this.conexionesOcupadas = new ArrayList();
         createConnections(conexionesTotales);
-        getConnectionFromData(host,user,pass,db_name);
+        baseConnection = getConnectionFromData(host,user,pass,db_name);
     }
     
     public PoolConnection getPoolConnection() throws NotAvailableConnectionsException{
@@ -72,13 +73,12 @@ public class ConnectionPool {
     }
     
     public Connection getConnectionFromData(String host, String user, String pass, String db_name) throws ConexionBDException {
-        Connection conexion = null;
         try {
-            conexion = DriverManager.getConnection(host + '/' + db_name, user, pass);
+            baseConnection = DriverManager.getConnection(host + '/' + db_name, user, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return (Connection) conexion;
+        return (Connection) baseConnection;
     }
 }
