@@ -1,35 +1,31 @@
 package pool;
 
+import Exceptions.ConexionBDException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import Exceptions.ConnectionsInUseException;
 import Exceptions.NotAvailableConnectionsException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionPool {    
-    private static ArrayList<PoolConnection> availablePoolConnections;
-    private static ArrayList<PoolConnection> unavailablePoolConnections;
-    private static ConnectionPool newPool;
-    private static int totalConnections;
+    private static ArrayList<PoolConnection> conexionesLibres;
+    private static ArrayList<PoolConnection> conexionesOcupadas;
+    private static int conexionesTotales;
     
-    private ConnectionPool(){
-        this.availablePoolConnections = new ArrayList();
-        this.unavailablePoolConnections = new ArrayList();
-        createConnections(totalConnections);
-    }
-    
-    public static ConnectionPool getPool(){
-        if(newPool == null){
-            newPool = new ConnectionPool();
-        }        
-        return newPool;
+    private ConnectionPool(String host, String user, String pass, String db_name) throws ConexionBDException{
+        this.conexionesLibres = new ArrayList();
+        this.conexionesOcupadas = new ArrayList();
+        createConnections(conexionesTotales);
+        getConnectionFromData(host,user,pass,db_name);
     }
     
     public PoolConnection getPoolConnection() throws NotAvailableConnectionsException{
-        if(availablePoolConnections.size()>0){
-            for (int i = 0; i < availablePoolConnections.size(); i++) {
-                if(availablePoolConnections.get(i).isConnected()){
-                    unavailablePoolConnections.add(availablePoolConnections.get(i));
-                    return availablePoolConnections.get(i);
+        if(conexionesLibres.size()>0){
+            for (int i = 0; i < conexionesLibres.size(); i++) {
+                if(conexionesLibres.get(i).isConnected()){
+                    conexionesOcupadas.add(conexionesLibres.get(i));
+                    return conexionesLibres.get(i);
                 }
             }
         }else{
@@ -40,17 +36,17 @@ public class ConnectionPool {
     }
     
     public void closeConnection(PoolConnection ActiveConnection){
-        availablePoolConnections.remove(ActiveConnection);        
+        conexionesLibres.remove(ActiveConnection);        
         ActiveConnection.disconnect();
-        availablePoolConnections.add(ActiveConnection);                
-        unavailablePoolConnections.remove(ActiveConnection);
+        conexionesLibres.add(ActiveConnection);                
+        conexionesOcupadas.remove(ActiveConnection);
         updateConnections();
     }
     
     public void updateConnections(){
-        for (int i = 0; i < availablePoolConnections.size(); i++) {
-            if(!availablePoolConnections.get(i).isConnected()){
-                availablePoolConnections.get(i).connect();
+        for (int i = 0; i < conexionesLibres.size(); i++) {
+            if(!conexionesLibres.get(i).isConnected()){
+                conexionesLibres.get(i).connect();
             }
         }
     }
@@ -58,20 +54,31 @@ public class ConnectionPool {
     private static void createConnections(int numberOfConnections) {
         for (int i = 0; i < numberOfConnections; i++) {
             Connection connection = null;
-            PoolConnection pc = new PoolConnection(connection);
-            availablePoolConnections.add(pc);
+            PoolConnection newConnection = new PoolConnection(connection);
+            conexionesLibres.add(newConnection);
         }
     }
     
     public static void changeConnections() throws ConnectionsInUseException{
-        if(totalConnections < unavailablePoolConnections.size()){
+        if(conexionesTotales < conexionesOcupadas.size()){
             throw new ConnectionsInUseException("No Hay Mas Conexiones");
         }else{
-            createConnections(totalConnections - unavailablePoolConnections.size());
+            createConnections(conexionesTotales - conexionesOcupadas.size());
         }
     }
     
     public static void newNumberOfConnections(int newNumberOfConnections){
-        totalConnections = newNumberOfConnections;
-    }       
+        conexionesTotales = newNumberOfConnections;
+    }
+    
+    public Connection getConnectionFromData(String host, String user, String pass, String db_name) throws ConexionBDException {
+        Connection conexion = null;
+        try {
+            conexion = DriverManager.getConnection(host + '/' + db_name, user, pass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return (Connection) conexion;
+    }
 }
