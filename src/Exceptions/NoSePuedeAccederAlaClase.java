@@ -1,13 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class NoSePuedeAccederAlaClase extends Exception{
     private final String mensaje = "Ocurrio un error al acceder a la clase";
-    private static Logger log = Logger.getLogger(NoSePuedeAccederAlaClase.class);
+    private static AdminMensajes admin = new AdminMensajes();
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

@@ -1,4 +1,4 @@
-package Util.exceptions;
+package Exceptions;
 
 public class ConfigBDModificadaException extends Exception {
 

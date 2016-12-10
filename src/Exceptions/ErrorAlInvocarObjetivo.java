@@ -1,14 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class ErrorAlInvocarObjetivo extends Exception {
-
+    private static AdminMensajes admin = new AdminMensajes();
     private final String mensaje = "Hubo un error al invocar la clase o método";
-    private static Logger log = Logger.getLogger(ErrorAlInvocarObjetivo.class);
 
     public String getMensaje() {
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

@@ -1,14 +1,14 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
 
 public class ArgumentosNoCorrectos extends Exception{
-    
+    private static AdminMensajes admin = new AdminMensajes();
     private final String mensaje = "Los argumentos insertados en el método no son correctos";
-    private static Logger log = Logger.getLogger(ArgumentosNoCorrectos.class);
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

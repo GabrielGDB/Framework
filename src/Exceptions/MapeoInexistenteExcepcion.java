@@ -1,14 +1,14 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
 
 public class MapeoInexistenteExcepcion extends Exception{
-    private static Logger log = Logger.getLogger(MapeoInexistenteExcepcion.class);
+    private static AdminMensajes admin = new AdminMensajes();
 
 
     public MapeoInexistenteExcepcion(String message) {
         super(message);
-        log.error(message);
+        admin.error(this);
     }
     
 }

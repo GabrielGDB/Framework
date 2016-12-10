@@ -1,14 +1,13 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
 
 public class FalloInstanciaDeClase extends Exception{
-    
+    private static AdminMensajes admin = new AdminMensajes();
     private final String mensaje = "Ocurrio un error al instanciar la clase controlador proporcionada";
-    private static Logger log = Logger.getLogger(FalloInstanciaDeClase.class);
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

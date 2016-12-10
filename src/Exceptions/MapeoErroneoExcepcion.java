@@ -1,14 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class MapeoErroneoExcepcion extends Exception{
-    private static Logger log = Logger.getLogger(MapeoErroneoExcepcion.class);
-
+    private static AdminMensajes admin = new AdminMensajes();
 
     public MapeoErroneoExcepcion(String message) {
         super(message);
-        log.error(message);
+        admin.error(this);
     }
 
     

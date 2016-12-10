@@ -1,14 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class MetodoNoExiste extends Exception{
-    
+    private static AdminMensajes admin = new AdminMensajes();
     private final String mensaje = "El método no existe";
-    private static Logger log = Logger.getLogger(MetodoNoExiste.class);
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

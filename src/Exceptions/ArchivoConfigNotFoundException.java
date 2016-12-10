@@ -1,13 +1,13 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
 
 public class ArchivoConfigNotFoundException extends Exception{
-    private static Logger log = Logger.getLogger(ArchivoConfigNotFoundException.class);
+    private static AdminMensajes admin = new AdminMensajes();
 
     
     public ArchivoConfigNotFoundException(String mensaje){        
         super(mensaje);
-        log.error(mensaje);
+        admin.error(this);
     }
 }

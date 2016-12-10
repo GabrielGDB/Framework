@@ -1,4 +1,4 @@
-package Util.exceptions;
+package Exceptions;
 
 import java.io.FileNotFoundException;
 

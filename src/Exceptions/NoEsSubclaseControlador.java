@@ -1,13 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class NoEsSubclaseControlador extends Exception{
     private final String mensaje = "La clase proporcionada no es subclase de Controlador";
-    private static Logger log = Logger.getLogger(NoEsSubclaseControlador.class);
+    private static AdminMensajes admin = new AdminMensajes();
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }

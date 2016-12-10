@@ -1,12 +1,14 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class ConnectionsInUseException extends Exception {
-    private static Logger log = Logger.getLogger(ConnectionsInUseException.class);
+    private static AdminMensajes admin = new AdminMensajes();
 
     public ConnectionsInUseException(String mensaje){
         super(mensaje);
-        log.error(mensaje);
+        admin.error(this);
     }
 }

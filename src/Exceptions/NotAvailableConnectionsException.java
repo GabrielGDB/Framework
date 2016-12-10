@@ -1,13 +1,13 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
 
 public class NotAvailableConnectionsException extends Exception {
-    private static Logger log = Logger.getLogger(NotAvailableConnectionsException.class);
-
+    private static AdminMensajes admin = new AdminMensajes();
     
     public NotAvailableConnectionsException(String mensaje){
         super(mensaje);
-        log.error(mensaje);
+        admin.error(this);
     }
 }

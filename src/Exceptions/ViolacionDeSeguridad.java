@@ -1,14 +1,15 @@
-package Util.exceptions;
+package Exceptions;
 
-import org.apache.log4j.Logger;
+import bitacora.AdminMensajes;
+
+
 
 public class ViolacionDeSeguridad extends Exception{
-    
+    private static AdminMensajes admin = new AdminMensajes();
     private final String mensaje = "Ha habido una violación de seguridad";    
-    private static Logger log = Logger.getLogger(ViolacionDeSeguridad.class);
     
     public String getMensaje(){
-        log.error(mensaje);
+        admin.error(this);
         return mensaje;
     }
 }
