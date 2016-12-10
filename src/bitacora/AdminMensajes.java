@@ -13,17 +13,17 @@ import org.apache.log4j.PropertyConfigurator;
  *
  * @author A10003074
  */
-public class Bitacora {
-    private Logger registro = Logger.getLogger(Bitacora.class);
+public class AdminMensajes {
+    private Logger registro = Logger.getLogger(AdminMensajes.class);
     
-public Bitacora(){
+public AdminMensajes(){
         try {
             Properties props = new Properties();
             props.load(getClass().getResourceAsStream("/bitacora/config_bit.properties"));
             PropertyConfigurator.configure(props);
         } catch (IOException e) {
             error(e);
-            System.err.println("Ocurrio un error en propiedades del log4j");
+            customError("Ocurrio un error en propiedades del log4j");
         }
     }
 
