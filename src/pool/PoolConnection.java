@@ -1,35 +1,32 @@
 package pool;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PoolConnection {
-    private boolean active;
+    private boolean isConnected;
     private Connection connection;
     
     public PoolConnection(Connection connection){
-        this.active = true;
+        this.isConnected = true;
         this.connection = connection;
     }
     
-    public ResultSet query(String query) throws SQLException{
-        ResultSet result = null;
-        PreparedStatement request = connection.prepareStatement(query);
-        result = request.executeQuery();
+    public ResultSet request(String query) throws SQLException{
+        ResultSet result = connection.prepareStatement(query).executeQuery();
         return result; 
     }
     
-    public void closeConnection(){
-        this.active = false;
+    public void disconnect(){
+        this.isConnected = false;
     }
 
-    public boolean isConnectionActive() {
-        return active;
+    public boolean isConnected() {
+        return isConnected;
     }
     
-    public void activateConnection(){
-        this.active = true;
+    public void connect(){
+        this.isConnected = true;
     }
 }
