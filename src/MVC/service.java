@@ -13,7 +13,7 @@ public class service {
     
     private String nameService;
     
-    private String control;
+    private String controler;
     
     private String metodo;
     
@@ -32,17 +32,17 @@ public class service {
     }
     
     /**
-     * @return the control
+     * @return the controler
      */
-    public String getControl() {
-        return control;
+    public String getControler() {
+        return controler;
     }
 
     /**
-     * @param control the control to set
+     * @param controler the control to set
      */
-    public void setControl(String control) {
-        this.control = control;
+    public void setControler(String controler) {
+        this.controler = controler;
     }
 
     /**
