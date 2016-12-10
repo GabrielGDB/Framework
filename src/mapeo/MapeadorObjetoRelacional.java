@@ -3,10 +3,11 @@ package mapeo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Util.exceptions.ArchivoConfigPoolNoEncontradoExcepcion;
-import Util.exceptions.MapeoErroneoExcepcion;
-import Util.exceptions.MapeoInexistenteExcepcion;
-import Util.exceptions.ObjetoErroneoExcepcion;
+import Exceptions.ArchivoConfigPoolNoEncontradoExcepcion;
+import Exceptions.MapeoErroneoExcepcion;
+import Exceptions.MapeoInexistenteExcepcion;
+import Exceptions.ObjetoErroneoExcepcion;
+import org.jdom2.JDOMException;
 import pool.PoolConnection;
 
 public class MapeadorObjetoRelacional {
@@ -14,11 +15,11 @@ public class MapeadorObjetoRelacional {
     private ArrayList listaObjetos;
     private MapeoClaseTabla[] mapeos;
 
-    public MapeadorObjetoRelacional(String URLArchivoConfiguracion) throws ArchivoConfigPoolNoEncontradoExcepcion {
+    public MapeadorObjetoRelacional(String URLArchivoConfiguracion) throws ArchivoConfigPoolNoEncontradoExcepcion, JDOMException {
         obtenerMapeos(URLArchivoConfiguracion);
     }
 
-    private void obtenerMapeos(String URLArchivoConfiguracion) throws ArchivoConfigPoolNoEncontradoExcepcion {
+    private void obtenerMapeos(String URLArchivoConfiguracion) throws ArchivoConfigPoolNoEncontradoExcepcion, JDOMException {
         ParseadorConfiguracionMapeo parseador = new ParseadorConfiguracionMapeo();
         mapeos = parseador.parsear(URLArchivoConfiguracion);
     }
@@ -29,7 +30,7 @@ public class MapeadorObjetoRelacional {
         
         if (mapeoEncontrado != null) {
             String consulta = "SELECT * FROM " + mapeoEncontrado.getNombreTabla();
-            ResultSet datosTabla = conexion.query(consulta);
+            ResultSet datosTabla = conexion.request(consulta);
             
             GeneradorObjetos generador = new GeneradorObjetos(mapeoEncontrado, datosTabla);
             generador.generarObjetos();

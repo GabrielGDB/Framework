@@ -3,7 +3,7 @@ package mapeo;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import Util.exceptions.ArchivoConfigPoolNoEncontradoExcepcion;
+import Exceptions.ArchivoConfigPoolNoEncontradoExcepcion;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;

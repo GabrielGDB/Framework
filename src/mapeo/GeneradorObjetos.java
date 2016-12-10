@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Util.exceptions.MapeoErroneoExcepcion;
-import Util.exceptions.ObjetoErroneoExcepcion;
+import Exceptions.MapeoErroneoExcepcion;
+import Exceptions.ObjetoErroneoExcepcion;
 
 public class GeneradorObjetos {
 
