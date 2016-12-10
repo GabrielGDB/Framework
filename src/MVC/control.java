@@ -11,7 +11,7 @@ package MVC;
  *
  * @author Luis
  */
-public class control {
+public class controler {
     
     
         
