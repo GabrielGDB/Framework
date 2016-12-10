@@ -28,89 +28,75 @@ public AdminMensajes(){
     }
 
     
-    public void error(Exception e, Class clazz){
+    public void error(Exception excepcion, Class clase){
         registro.error(
                     "En la siguiente clase "
-                    + getClassName(clazz)
+                    + obtenerNombreClase(clase)
                     + ", Se genero la siguiente exepcion: " 
-                    + e
+                    + excepcion
                 
         );
         
     }
-    public void error(Exception e){
+    public void error(Exception excepcion){
         registro.error(
                     "Se genero la siguiente exepcion: " 
-                    + e
+                    + excepcion
                 
         );
     }
-    public void warn(Exception e, Class clazz){
+    public void advertencia(Exception excepcion, Class clase){
         registro.warn(
                     "En la siguiente clase: "
-                    + getClassName(clazz)
+                    + obtenerNombreClase(clase)
                     + ", Se genero la siguiente exepcion: " 
-                    + e
+                    + excepcion
                 
         );
         
     }
-    public void warn(Exception e){
+    public void advertencia(Exception excepcion){
         registro.warn(
                     "Se genero la siguiente exepcion: " 
-                    + e
+                    + excepcion
                 
         );
     }
     
-    public void customWarn(String message){
+    public void customAdvertencia(String mensaje){
         registro.warn(
                 "Se ingreso la siguiente advertencia: "
-                + message
+                + mensaje
         );
     }
     
-    public void customWarn(String message, Class clazz){
+    public void customAdvertencia(String mensaje, Class clase){
         registro.warn(
                 "En la siguiente clase: "
-                + getClassName(clazz)
+                + obtenerNombreClase(clase)
                 + ", Se ingreso la siguiente advertencia: "
-                + message
+                + mensaje
         );
     }
 
-    public void customError(String message){
+    public void customError(String mensaje){
         registro.error(
                 "Se ingreso la siguiente error: "
-                + message
+                + mensaje
         );
     }
     
-    public void customError(String message, Class clazz){
+    public void customError(String mensaje, Class clase){
         registro.error(
                 "En la siguiente clase: "
-                + getClassName(clazz)
+                + obtenerNombreClase(clase)
                 + ", Se ingreso la siguiente error: "
-                + message
+                + mensaje
         );
     }
     
-    private String getClassName(Class clazz) {
-        return clazz.getSimpleName();
+    private String obtenerNombreClase(Class clase) {
+        return clase.getSimpleName();
     }
     
-    public static void easterEgg(){
-        int caso = ThreadLocalRandom.current().nextInt(1, 2 + 1);
-        switch(caso){
-            case 1:
-                System.out.println("Bitacora de Buzz Lightyear, no detecto vida inteligente");
-                break;
-            case 2:
-                System.err.println("Primero estás defendiendo toda la galaxia y, de pronto te encuentras tomando té de Deerjaling con María Antonieta y su hermanita.");
-                break;
-            default:
-                break;
-        }
-        
-    }
 }
