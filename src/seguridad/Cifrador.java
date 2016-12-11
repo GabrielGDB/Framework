@@ -21,7 +21,7 @@ import org.apache.commons.codec.binary.Base64;
  *
  * @author dell
  */
-public class Cipher {
+public class Cifrador {
 
     String secretKey;
 
