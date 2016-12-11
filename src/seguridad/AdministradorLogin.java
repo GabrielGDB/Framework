@@ -15,7 +15,6 @@ public class AdministradorLogin {
     
     private ArrayList<Usuario> usuarios;
     Cifrador cipher;
-    UserInterface ui;
     AdministradorAcceso accessManager;
 
     public AdministradorLogin() {
