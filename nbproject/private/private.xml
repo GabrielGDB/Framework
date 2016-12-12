@@ -2,20 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/configuracion/ParseadorConfiguracionMapeo.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/balto/Bitacora.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/excepcion/MapeoErroneoExcepcion.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/excepcion/MapeoInexistenteExcepcion.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/excepcion/ObjetoErroneoExcepcion.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/MapeadorObjetoRelacional.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/MapeoClaseTabla.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/oni/GeneradorObjetos.java</file>
-            <file>file:/C:/Users/DEMON/Documents/NetBeansProjects/Framework/src/aka/ConfigurardorExterno.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/administradorbasDatos/Framework/src/seguridad/AdministradorLogin.java</file>
+            <file>file:/C:/Users/dell/Documents/NetBeansProjects/administradorbasDatos/Framework/src/bitacora/AdminMensajes.java</file>
         </group>
->>>>>>> origin/master
     </open-files>
 </project-private>
